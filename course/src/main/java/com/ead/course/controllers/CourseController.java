@@ -17,7 +17,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/course")
+@RequestMapping("/courses")
 @CrossOrigin(origins = "*", maxAge = 3600)
 public class CourseController {
 
@@ -28,8 +28,8 @@ public class CourseController {
     public ResponseEntity<Object> saveCourse(@RequestBody @Valid CourseDto courseDto){
         var courseModel = new CourseModel();
         BeanUtils.copyProperties(courseDto, courseModel);
-        courseModel.setCreationDate(LocalDateTime.now(ZoneId.of("UFC")));
-        courseModel.setLastUpdateDate(LocalDateTime.now(ZoneId.of("UFC")));
+        courseModel.setCreationDate(LocalDateTime.now(ZoneId.of("UTC")));
+        courseModel.setLastUpdateDate(LocalDateTime.now(ZoneId.of("UTC")));
         return ResponseEntity.status(HttpStatus.CREATED).body(courseService.save(courseModel));
     }
 
@@ -43,7 +43,7 @@ public class CourseController {
         return ResponseEntity.status(HttpStatus.OK).body("Course deleted successfully");
     }
 
-    @PostMapping("/{courseId}")
+    @PutMapping("/{courseId}")
     public ResponseEntity<Object> updateCourse(@PathVariable(value = "courseId") UUID courseId,
                                                @RequestBody @Valid CourseDto courseDto) {
         Optional<CourseModel> courseModelOptional = courseService.findById(courseId);
@@ -56,7 +56,7 @@ public class CourseController {
         courseModel.setImageUrl(courseDto.getImageUrl());
         courseModel.setCourseStatus(courseDto.getCourseStatus());
         courseModel.setCourseLevel(courseDto.getCourseLevel());
-        courseModel.setLastUpdateDate(LocalDateTime.now(ZoneId.of("UFC")));
+        courseModel.setLastUpdateDate(LocalDateTime.now(ZoneId.of("UTC")));
         return ResponseEntity.status(HttpStatus.OK).body(courseService.save(courseModel));
     }
 
