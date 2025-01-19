@@ -148,7 +148,155 @@
 		},
 		{
 			"name": "MODULES",
-			"item": []
+			"item": [
+				{
+					"name": "POST MODULE",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Titulo 2\",\r\n    \"description\": \"Iniciando o primeiro modulo de cursos 2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/courses/a69b28b7-a799-42c4-961a-faa80eab2817/modules",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"courses",
+								"a69b28b7-a799-42c4-961a-faa80eab2817",
+								"modules"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET ALL MODULES",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082//courses/a69b28b7-a799-42c4-961a-faa80eab2817/modules",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"",
+								"courses",
+								"a69b28b7-a799-42c4-961a-faa80eab2817",
+								"modules"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET ONE MODULE",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082//courses/02aef881-62f2-44c1-ae7e-c69beb161288/modules/c80dfc07-f001-4ba4-bb85-f5f611e5eaa1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"",
+								"courses",
+								"02aef881-62f2-44c1-ae7e-c69beb161288",
+								"modules",
+								"c80dfc07-f001-4ba4-bb85-f5f611e5eaa1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE MODULE",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082//courses/02aef881-62f2-44c1-ae7e-c69beb161288/modules//4c3d06ae-cadf-4547-a271-1990d06a22bb",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"",
+								"courses",
+								"02aef881-62f2-44c1-ae7e-c69beb161288",
+								"modules",
+								"",
+								"4c3d06ae-cadf-4547-a271-1990d06a22bb"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE MODULE",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Titulo 23\",\r\n    \"description\": \"Iniciando o primeiro modulo de cursos 23\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082//courses/02aef881-62f2-44c1-ae7e-c69beb161288/modules//4c3d06ae-cadf-4547-a271-1990d06a22bb",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"",
+								"courses",
+								"02aef881-62f2-44c1-ae7e-c69beb161288",
+								"modules",
+								"",
+								"4c3d06ae-cadf-4547-a271-1990d06a22bb"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		},
 		{
 			"name": "LESSONS",

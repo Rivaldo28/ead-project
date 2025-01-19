@@ -23,7 +23,7 @@ public class ModuleModel implements Serializable {
     private UUID moduleId;
 
     @Column(nullable = false, length = 150)
-    private String tile;
+    private String title;
 
     @Column(nullable = false, length = 250)
     private String description;
