@@ -159,7 +159,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"Titulo 2\",\r\n    \"description\": \"Iniciando o primeiro modulo de cursos 2\"\r\n}",
+							"raw": "{\r\n    \"title\": \"Modulo 2\",\r\n    \"description\": \"Iniciando o primeiro modulo de cursos 2\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -167,7 +167,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8082/courses/a69b28b7-a799-42c4-961a-faa80eab2817/modules",
+							"raw": "http://localhost:8082/courses/02aef881-62f2-44c1-ae7e-c69beb161288/modules",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -175,7 +175,7 @@
 							"port": "8082",
 							"path": [
 								"courses",
-								"a69b28b7-a799-42c4-961a-faa80eab2817",
+								"02aef881-62f2-44c1-ae7e-c69beb161288",
 								"modules"
 							]
 						}
@@ -191,16 +191,15 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8082//courses/a69b28b7-a799-42c4-961a-faa80eab2817/modules",
+							"raw": "http://localhost:8082/courses/02aef881-62f2-44c1-ae7e-c69beb161288/modules",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8082",
 							"path": [
-								"",
 								"courses",
-								"a69b28b7-a799-42c4-961a-faa80eab2817",
+								"02aef881-62f2-44c1-ae7e-c69beb161288",
 								"modules"
 							]
 						}
@@ -300,7 +299,124 @@
 		},
 		{
 			"name": "LESSONS",
-			"item": []
+			"item": [
+				{
+					"name": "POST LESSONS",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Aula 3\",\r\n    \"description\": \"O link para acessar o site de geração do projeto e intializr.com\",\r\n    \"videoUrl\": \"https://www.youtube.com/watch?v=6VuXXudC3Ew\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/modules/19d4918d-09d7-402c-9e96-299c362e1f80/lessons",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"modules",
+								"19d4918d-09d7-402c-9e96-299c362e1f80",
+								"lessons"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE LESSON",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/modules/3e9fd293-5650-42cb-8cde-e4a614a8cd29/lessons/14dbfbfb-f7b8-4851-9ad6-e6959f58ae4d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"modules",
+								"3e9fd293-5650-42cb-8cde-e4a614a8cd29",
+								"lessons",
+								"14dbfbfb-f7b8-4851-9ad6-e6959f58ae4d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET ALL LESSONS",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/modules/19d4918d-09d7-402c-9e96-299c362e1f80/lessons",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"modules",
+								"19d4918d-09d7-402c-9e96-299c362e1f80",
+								"lessons"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE LESSONS",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Aula 1\",\r\n    \"description\": \"O link para acessar o site de geração do projeto e intializr.com\",\r\n    \"videoUrl\": \"https://www.youtube.com/watch?v=6VuXXudC3Ew\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/modules/19d4918d-09d7-402c-9e96-299c362e1f80/lessons/32ae132d-f4b2-4bd2-9668-9c99953e011f",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"modules",
+								"19d4918d-09d7-402c-9e96-299c362e1f80",
+								"lessons",
+								"32ae132d-f4b2-4bd2-9668-9c99953e011f"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		},
 		{
 			"name": "New Request",
