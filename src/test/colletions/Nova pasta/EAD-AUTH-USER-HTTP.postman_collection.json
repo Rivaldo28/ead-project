@@ -1,0 +1,214 @@
+{
+	"info": {
+		"_postman_id": "754bef9b-8a0b-48c9-9006-ef3dd4d6baf7",
+		"name": "EAD-AUTH-USER-HTTP",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11668825"
+	},
+	"item": [
+		{
+			"name": "AUTH",
+			"item": [
+				{
+					"name": "SIGN UP",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"manuellavitoria\",\r\n    \"email\": \"contato@manuellavitoria.com\",\r\n    \"password\": \"123456\",\r\n    \"fullName\": \"Emanuella Victoria\",\r\n    \"phoneNumber\": \"11971551178\",\r\n    \"cpf\": \"16286209990\",\r\n    \"imageUrl\": \"teste\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8087/auth/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "USER",
+			"item": [
+				{
+					"name": "GET ALL USERS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8087/users?userType=STUDENT",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "userType",
+									"value": "STUDENT"
+								},
+								{
+									"key": "size",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "sort",
+									"value": "creationDate,desc",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "0",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "contato@rivaldosouza.com",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET ONE USER",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8087/users/a062034d-3b75-45e7-bfcc-d2fd7fecc131",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"users",
+								"a062034d-3b75-45e7-bfcc-d2fd7fecc131"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE USER",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8087/users/7e0f94b3-6de6-4630-b986-4b2a78eb392b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"users",
+								"7e0f94b3-6de6-4630-b986-4b2a78eb392b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE USER",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"rivaldosouza\",\r\n    \"email\": \"contato@rivaldosouza.com\",\r\n    \"password\": \"123456\",\r\n    \"fullName\": \"Rivaldo Souza\",\r\n    \"phoneNumber\": \"11971551178\",\r\n    \"cpf\": \"36286209932\",\r\n    \"imageUrl\": \"teste\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8087/users/7e0f94b3-6de6-4630-b986-4b2a78eb392b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"users",
+								"7e0f94b3-6de6-4630-b986-4b2a78eb392b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE PASSWORD",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"rivaldosouza\",\r\n    \"email\": \"contato@rivaldosouza.com\",\r\n    \"password\": \"123410\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8087/users/a062034d-3b75-45e7-bfcc-d2fd7fecc131/password",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"users",
+								"a062034d-3b75-45e7-bfcc-d2fd7fecc131",
+								"password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE IMAGE",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8087/users/a062034d-3b75-45e7-bfcc-d2fd7fecc131/image",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"users",
+								"a062034d-3b75-45e7-bfcc-d2fd7fecc131",
+								"image"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
