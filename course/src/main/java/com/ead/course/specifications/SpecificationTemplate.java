@@ -12,7 +12,7 @@ public class SpecificationTemplate {
     @And({
             @Spec(path = "courseLevel", spec = Equal.class),
             @Spec(path = "courseStatus", spec = Equal.class),
-            @Spec(path = "name", spec = Like.class)
+            @Spec(path = "name", spec = Like.class),
     })
     public interface CourseSpec extends Specification<CourseModel> {}
 }
