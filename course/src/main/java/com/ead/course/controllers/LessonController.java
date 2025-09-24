@@ -6,6 +6,8 @@ import com.ead.course.models.ModuleModel;
 import com.ead.course.services.LessonService;
 import com.ead.course.services.ModuleService;
 import com.ead.course.specifications.SpecificationTemplate;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -34,6 +36,8 @@ public class LessonController {
     private ModuleService moduleService;
 
     @PostMapping("/modules/{moduleId}/lessons")
+    @Tag(name = "Aulas", description = "Informações sobre as aulas")
+    @Operation(summary = "Adicionar aula", description = "Essa função é responsável por adicionar aulas")
     public ResponseEntity<Object> saveLesson(@PathVariable(value = "moduleId") UUID moduleId,
                                              @RequestBody @Valid LessonDto lessonDto){
         Optional<ModuleModel> moduleModelOptional =  moduleService.findById(moduleId);
@@ -48,6 +52,8 @@ public class LessonController {
     }
 
     @DeleteMapping("/modules/{moduleId}/lessons/{lessonId}")
+    @Tag(name = "Aulas", description = "Informações sobre as aulas")
+    @Operation(summary = "Deletar de aulas disponíveis por módulo", description = "Essa função é responsável por deletar aula")
     public ResponseEntity<Object> deleteLesson(@PathVariable(value = "moduleId") UUID moduleId,
                                                @PathVariable(value = "lessonId") UUID lessonId){
         Optional<LessonModel> lessonModelOptional = lessonService.findLessonIntoModule(moduleId, lessonId);
@@ -59,6 +65,8 @@ public class LessonController {
     }
 
     @PutMapping("/modules/{moduleId}/lessons/{lessonId}")
+    @Tag(name = "Aulas", description = "Informações sobre as aulas")
+    @Operation(summary = "Atualizar de aulas disponíveis por módulo", description = "Essa função é responsável por atualizar todas as aulas disponíveis em módulo")
     public ResponseEntity<Object> updateLesson(@PathVariable(value = "moduleId") UUID moduleId,
                                                @PathVariable(value = "lessonId") UUID lessonId,
                                                @RequestBody @Valid LessonDto lessonDto) {
@@ -73,6 +81,8 @@ public class LessonController {
     }
 
     @GetMapping("/modules/{moduleId}/lessons")
+    @Tag(name = "Aulas", description = "Informações sobre as aulas")
+    @Operation(summary = "Listagem de aulas disponíveis por módulo", description = "Essa função é responsável por listar todas as aulas disponíveis no módulo")
     public ResponseEntity<Page<LessonModel>> getAllLessons(@PathVariable(value = "moduleId") UUID moduleId,
                                                            SpecificationTemplate.LessonSpec spec,
                                                            @PageableDefault(page = 0, size = 10,
@@ -84,7 +94,9 @@ public class LessonController {
         );
     }
 
-    @GetMapping("/modules/{moduleId/lessons/{lessonId}")
+    @GetMapping("/modules/{moduleId}/lessons/{lessonId}")
+    @Tag(name = "Aulas", description = "Informações sobre as aulas")
+    @Operation(summary = "Listagem de aulas disponíveis por módulo e aula", description = "Essa função é responsável por listar todas as aulas disponíveis em módulo e aulas")
     public ResponseEntity<Object> getOneLesson(@PathVariable(value = "moduleId") UUID moduleId,
                                                @PathVariable(value = "lessonId") UUID lessonId){
         Optional<LessonModel> lessonModelOptional = lessonService.findLessonIntoModule(moduleId, lessonId);

@@ -4,6 +4,9 @@ import com.ead.course.dtos.CourseDto;
 import com.ead.course.models.CourseModel;
 import com.ead.course.services.CourseService;
 import com.ead.course.specifications.SpecificationTemplate;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springdoc.api.annotations.ParameterObject;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -17,7 +20,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -30,6 +32,8 @@ public class CourseController {
     private CourseService courseService;
 
     @PostMapping
+    @Tag(name = "Cursos", description = "Informações sobre os cursos")
+    @Operation(summary = "Adicionar curso", description = "Essa função é responsável por adicionar cursos")
     public ResponseEntity<Object> saveCourse(@RequestBody @Valid CourseDto courseDto) {
         var courseModel = new CourseModel();
         BeanUtils.copyProperties(courseDto, courseModel);
@@ -39,6 +43,8 @@ public class CourseController {
     }
 
     @DeleteMapping("/{courseId}")
+    @Tag(name = "Cursos", description = "Informações sobre os cursos")
+    @Operation(summary = "Deletar curso", description = "Essa função é responsável por deletar curso")
     public ResponseEntity<Object> deleteCourse(@PathVariable(value = "courseId") UUID courseId) {
         Optional<CourseModel> courseModelOptional = courseService.findById(courseId);
         if (!courseModelOptional.isPresent()) {
@@ -49,6 +55,8 @@ public class CourseController {
     }
 
     @PutMapping("/{courseId}")
+    @Tag(name = "Cursos", description = "Informações sobre os cursos")
+    @Operation(summary = "Atualizar curso", description = "Essa função é responsável por atualizar cursos")
     public ResponseEntity<Object> updateCourse(@PathVariable(value = "courseId") UUID courseId,
                                                @RequestBody @Valid CourseDto courseDto) {
         Optional<CourseModel> courseModelOptional = courseService.findById(courseId);
@@ -66,15 +74,19 @@ public class CourseController {
     }
 
     @GetMapping
+    @Tag(name = "Cursos", description = "Informações sobre os cursos")
+    @Operation(summary = "Listar curso todos os cursos", description = "Essa função é responsável por listar todos cursos")
     public ResponseEntity<Page<CourseModel>> getAllCourses(SpecificationTemplate.CourseSpec spec,
                                                            @PageableDefault(page = 0, size = 10,
                                                                    sort = "courseId",
                                                                    direction = Sort.Direction.ASC)
-                                                           Pageable pageable){
+                                                           @ParameterObject Pageable pageable){
         return ResponseEntity.status(HttpStatus.OK).body(courseService.findAll(spec,pageable));
     }
 
     @GetMapping("/{courseId}")
+    @Tag(name = "Cursos", description = "Informações sobre os cursos")
+    @Operation(summary = "Listar curso uid", description = "Essa função é responsável por listar por id")
     public ResponseEntity<Object> getOneCourses(@PathVariable(value = "courseId") UUID courseId) {
         Optional<CourseModel> courseModelOptional = courseService.findById(courseId);
         if (!courseModelOptional.isPresent()) {

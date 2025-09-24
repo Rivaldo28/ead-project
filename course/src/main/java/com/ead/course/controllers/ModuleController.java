@@ -6,6 +6,8 @@ import com.ead.course.models.ModuleModel;
 import com.ead.course.services.CourseService;
 import com.ead.course.services.ModuleService;
 import com.ead.course.specifications.SpecificationTemplate;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -33,6 +35,8 @@ public class ModuleController {
     private CourseService courseService;
 
     @PostMapping("/courses/{courseId}/modules")
+    @Tag(name = "Módulos", description = "Informações sobre os módulos")
+    @Operation(summary = "Adicionar módulo", description = "Essa função é responsável por adicionar módulos")
     public ResponseEntity<Object> saveModule(@PathVariable(value = "courseId") UUID courseId,
                                              @RequestBody @Valid ModuleDto moduleDto){
         Optional<CourseModel> courseModelOptional = courseService.findById(courseId);
@@ -47,6 +51,8 @@ public class ModuleController {
     }
 
     @DeleteMapping("/courses/{courseId}/modules/{moduleId}")
+    @Tag(name = "Módulos", description = "Informações sobre os módulos")
+    @Operation(summary = "Deletar de módulos disponíveis por módulo", description = "Essa função é responsável por deletar módulo")
     public ResponseEntity<Object> deleteModule(@PathVariable(value = "courseId")UUID courseId,
                                                @PathVariable(value = "moduleId")UUID moduleId) {
         Optional<ModuleModel> moduleModelOptional = moduleService.findModuleIntoCourse(courseId, moduleId);
@@ -58,6 +64,8 @@ public class ModuleController {
     }
 
     @PutMapping("/courses/{courseId}/modules/{moduleId}")
+    @Tag(name = "Módulos", description = "Informações sobre os módulos")
+    @Operation(summary = "Atualizar módulo", description = "Essa função é responsável por adatualizar módulos")
     public ResponseEntity<Object> updateModule(@PathVariable(value = "courseId") UUID courseId,
                                                @PathVariable(value = "moduleId") UUID moduleId,
                                                @RequestBody @Valid ModuleDto moduleDto) {
@@ -72,6 +80,8 @@ public class ModuleController {
     }
 
     @GetMapping("/courses/{courseId}/modules")
+    @Tag(name = "Módulos", description = "Informações sobre os módulos")
+    @Operation(summary = "Listagem de módulos por curso", description = "Essa função é responsável por listar todos módulos por curso")
     public ResponseEntity<Page<ModuleModel>> getAllModules(@PathVariable(value = "courseId") UUID courseId,
                                                            SpecificationTemplate.ModuleSpec spec,
                                                            @PageableDefault(page = 0, size = 10,
@@ -84,6 +94,8 @@ public class ModuleController {
     }
 
     @GetMapping("/courses/{courseId}/modules/{moduleId}")
+    @Tag(name = "Módulos", description = "Informações sobre os módulos")
+    @Operation(summary = "Listagem de módulos por curso e módulo", description = "Essa função é responsável por listar todos módulos por curso e módulo")
     public ResponseEntity<Object> getOneModule(@PathVariable(value = "courseId") UUID courseId,
                                                @PathVariable(value = "moduleId") UUID moduleId){
         Optional<ModuleModel> moduleModelOptional = moduleService.findModuleIntoCourse(courseId, moduleId);
