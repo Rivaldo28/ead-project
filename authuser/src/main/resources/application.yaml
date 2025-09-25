@@ -1,26 +1,26 @@
-server:
-  port: 8087
-
-spring:
-  datasource:
-    url: jdbc:postgresql://localhost:5432/ead-authuser
-    username: postgres
-    password: senha
-  jpa:
-    hibernate:
-      ddl-auto: update
-      dialect: org.hibernate.dialect.PostgreSQLDialect
-      jdbc:
-        lob.non-contextual-creation: true
-    properties:
-      hibernate:
-  output:
-    ansi:
-      enabled: Always
-
-logging:
-  level:
-    com.ead: TRACE
-    root: INFO
-    org.springframework.web: DEBUG
-    org.hibernate: DEBUG
+#server:
+#  port: 8087
+#
+#spring:
+#  datasource:
+#    url: jdbc:postgresql://localhost:5432/ead-authuser
+#    username: postgres
+#    password: senha
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#      dialect: org.hibernate.dialect.PostgreSQLDialect
+#      jdbc:
+#        lob.non-contextual-creation: true
+#    properties:
+#      hibernate:
+#  output:
+#    ansi:
+#      enabled: Always
+#
+#logging:
+#  level:
+#    com.ead: TRACE
+#    root: INFO
+#    org.springframework.web: DEBUG
+#    org.hibernate: DEBUG
