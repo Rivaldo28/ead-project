@@ -5,6 +5,9 @@ import com.ead.authuser.models.UserModel;
 import com.ead.authuser.services.UserService;
 import com.ead.authuser.specifications.SpecificationTemplate;
 import com.fasterxml.jackson.annotation.JsonView;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springdoc.api.annotations.ParameterObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -32,9 +35,11 @@ public class UserController {
     private UserService userService;
 
     @GetMapping
+    @Tag(name = "Usuários", description = "Informações sobre os usuários")
+    @Operation(summary = "Listar todos usuários", description = "Essa função é responsável por listar por usuários")
     public ResponseEntity<Page<UserModel>> getAllUsers(SpecificationTemplate.UserPec spec,
                                                         @PageableDefault(page = 0, size = 10, sort = "userId",
-                                                        direction = Sort.Direction.ASC) Pageable pageable) {
+                                                        direction = Sort.Direction.ASC) @ParameterObject Pageable pageable) {
         Page<UserModel> userModelPage = userService.findAll(spec, pageable);
         if(!userModelPage.isEmpty()) {
             for(UserModel user: userModelPage.toList()) {
@@ -45,6 +50,8 @@ public class UserController {
     }
 
     @GetMapping("/{userId}")
+    @Tag(name = "Usuários", description = "Informações sobre os usuários")
+    @Operation(summary = "Listar todos usuários por uuid", description = "Essa função é responsável por listar por usuários por uuid")
     public ResponseEntity<Object> getOneUser(@PathVariable(value = "userId") UUID userId) {
         Optional<UserModel> userModelOptional = userService.findById(userId);
         if (!userModelOptional.isPresent()) {
@@ -55,6 +62,8 @@ public class UserController {
     }
 
     @DeleteMapping("/{userId}")
+    @Tag(name = "Usuários", description = "Informações sobre os usuários")
+    @Operation(summary = "Deletar usuários", description = "Essa função é responsável por deletar usuários")
     public ResponseEntity<Object> deleteUser(@PathVariable(value = "userId") UUID userId){
         Optional<UserModel> userModelOptional = userService.findById(userId);
         if (!userModelOptional.isPresent()) {
@@ -66,6 +75,8 @@ public class UserController {
     }
 
     @PutMapping("/{userId}")
+    @Tag(name = "Usuários", description = "Informações sobre os usuários")
+    @Operation(summary = "Atualizar usuários", description = "Essa função é responsável por atualizar usuários por id")
     public ResponseEntity<Object> updateUser(@PathVariable(value = "userId") UUID userId,
                                              @RequestBody @Validated(UserDto.UserView.UserPut.class)
                                              @JsonView(UserDto.UserView.UserPut.class) UserDto userDto){
@@ -84,6 +95,8 @@ public class UserController {
     }
 
     @PutMapping("/{userId}/password")
+    @Tag(name = "Usuários", description = "Informações sobre os usuários")
+    @Operation(summary = "Atualizar senha", description = "Essa função é responsável por atualizar senha")
     public ResponseEntity<Object> updatePassword(@PathVariable(value = "userId") UUID userId,
                                                  @RequestBody @Validated(UserDto.UserView.PasswordPut.class)
                                                  @JsonView(UserDto.UserView.PasswordPut.class) UserDto userDto){
@@ -103,6 +116,8 @@ public class UserController {
     }
 
     @PutMapping("/{userId}/image")
+    @Tag(name = "Usuários", description = "Informações sobre os usuários")
+    @Operation(summary = "Atualizar imagem", description = "Essa função é responsável por atualizar imagem")
     public ResponseEntity<Object> updateImage(@PathVariable(value = "userId") UUID userId,
                                               @RequestBody @Validated(UserDto.UserView.ImagePut.class)
                                               @JsonView(UserDto.UserView.ImagePut.class) UserDto userDto){

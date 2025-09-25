@@ -6,6 +6,8 @@ import com.ead.authuser.enums.UserType;
 import com.ead.authuser.models.UserModel;
 import com.ead.authuser.services.UserService;
 import com.fasterxml.jackson.annotation.JsonView;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -28,6 +30,8 @@ public class AuthenticationController {
     private UserService userService;
 
     @PostMapping("/signup")
+    @Tag(name = "Usuários", description = "Informações sobre os usuários")
+    @Operation(summary = "Adicionar usuários", description = "Essa função é responsável por adicionar usuários")
     public ResponseEntity<Object> registerUser(@RequestBody @Validated(UserDto.UserView.RegistrationPost.class)
             @JsonView(UserDto.UserView.RegistrationPost.class) UserDto userDto) {
 
@@ -49,6 +53,8 @@ public class AuthenticationController {
 
     /*Exemplo*/
     @GetMapping("/")
+    @Tag(name = "Usuários", description = "Informações sobre os usuários")
+    @Operation(summary = "Tratando log", description = "Essa função é responsável tratar logs")
     public String index() {
 //        comando mvn para run: mvn spring-boot:run -Dspring-boot.run.arguments--logging.level.com.ead-TRACE
         logger.trace("TRACE");
