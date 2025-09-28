@@ -22,6 +22,8 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Optional;
 import java.util.UUID;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @RestController
 @RequestMapping("/courses")
@@ -75,13 +77,19 @@ public class CourseController {
 
     @GetMapping
     @Tag(name = "Cursos", description = "Informações sobre os cursos")
-    @Operation(summary = "Listar curso todos os cursos", description = "Essa função é responsável por listar todos cursos")
+    @Operation(summary = "Listar curso todos os cursos ou por usuário", description = "Essa função é responsável por listar todos cursos")
     public ResponseEntity<Page<CourseModel>> getAllCourses(SpecificationTemplate.CourseSpec spec,
                                                            @PageableDefault(page = 0, size = 10,
                                                                    sort = "courseId",
                                                                    direction = Sort.Direction.ASC)
-                                                           @ParameterObject Pageable pageable){
-        return ResponseEntity.status(HttpStatus.OK).body(courseService.findAll(spec,pageable));
+                                                           @ParameterObject Pageable pageable,
+                                                           @RequestParam(required = false) UUID userId){
+
+        if(userId != null) {
+            return ResponseEntity.status(HttpStatus.OK).body(courseService.findAll(SpecificationTemplate.courseUsersId(userId).and(spec), pageable));
+        } else {
+            return ResponseEntity.status(HttpStatus.OK).body(courseService.findAll(spec, pageable));
+        }
     }
 
     @GetMapping("/{courseId}")

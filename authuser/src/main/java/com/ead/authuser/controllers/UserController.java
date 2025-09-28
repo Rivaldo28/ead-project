@@ -38,11 +38,17 @@ public class UserController {
 
     @GetMapping
     @Tag(name = "Usuários", description = "Informações sobre os usuários")
-    @Operation(summary = "Listar todos usuários", description = "Essa função é responsável por listar por usuários")
+    @Operation(summary = "Listar todos usuários ou por curso", description = "Essa função é responsável por listar por usuários")
     public ResponseEntity<Page<UserModel>> getAllUsers(SpecificationTemplate.UserPec spec,
                                                         @PageableDefault(page = 0, size = 10, sort = "userId",
-                                                        direction = Sort.Direction.ASC) @ParameterObject Pageable pageable) {
-        Page<UserModel> userModelPage = userService.findAll(spec, pageable);
+                                                        direction = Sort.Direction.ASC) @ParameterObject Pageable pageable,
+                                                        @RequestParam(required = false) UUID courseId) {
+        Page<UserModel> userModelPage = null;
+        if(courseId != null) {
+            userModelPage = userService.findAll(SpecificationTemplate.userCourseId(courseId).and(spec), pageable);
+        } else {
+            userModelPage = userService.findAll(spec, pageable);
+        }
         if(!userModelPage.isEmpty()) {
             for(UserModel user: userModelPage.toList()) {
                 user.add(linkTo(methodOn(UserController.class).getOneUser(user.getUserId())).withSelfRel());
