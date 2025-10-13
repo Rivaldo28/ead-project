@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserCourseServiceImpl implements UserCourseService {
 
-    @Autowired
+    final
     UserCourseRepository userCourseRepository;
 
     public UserCourseServiceImpl(UserCourseRepository userCourseRepository) {
