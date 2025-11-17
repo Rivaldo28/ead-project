@@ -6,12 +6,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@OpenAPIDefinition(
-        info = @Info(
-                title = "Sistemas API Usuários",
-                description = "Gestão de usuários do sistema"
-        )
-)
+//@OpenAPIDefinition(
+//        info = @Info(
+//                title = "Sistemas API Usuários",
+//                description = "Gestão de usuários do sistema"
+//        )
+//)
 public class AuthuserApplication {
 
 	public static void main(String[] args) {

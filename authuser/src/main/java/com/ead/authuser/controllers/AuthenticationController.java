@@ -25,6 +25,7 @@ import java.time.ZoneId;
 @RestController
 @CrossOrigin(value = "*", maxAge = 3600)
 @RequestMapping("/auth")
+@Tag(name = "Usuários", description = "Informações sobre os usuários")
 public class AuthenticationController {
 
 //    Logger logger = LogManager.getLogger(AuthenticationController.class);
@@ -32,7 +33,6 @@ public class AuthenticationController {
     private UserService userService;
 
     @PostMapping("/signup")
-    @Tag(name = "Usuários", description = "Informações sobre os usuários")
     @Operation(summary = "Adicionar usuários", description = "Essa função é responsável por adicionar usuários")
     public ResponseEntity<Object> registerUser(@RequestBody @Validated(UserDto.UserView.RegistrationPost.class)
             @JsonView(UserDto.UserView.RegistrationPost.class) UserDto userDto) {
@@ -60,7 +60,6 @@ public class AuthenticationController {
 
     /*Exemplo*/
     @GetMapping("/")
-    @Tag(name = "Usuários", description = "Informações sobre os usuários")
     @Operation(summary = "Tratando log", description = "Essa função é responsável tratar logs")
     public String index() {
 //        comando mvn para run: mvn spring-boot:run

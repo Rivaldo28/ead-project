@@ -1,31 +1,37 @@
-spring.datasource.url=jdbc:h2:mem:testdb
-spring.datasource.driverClassName=org.h2.Driver
-spring.datasource.username=sa
-spring.datasource.password=password
-spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
-#server:
-#  port: 8087
-#
-#spring:
-#  datasource:
-#    url: jdbc:postgresql://localhost:5432/ead-authuser
-#    username: postgres
-#    password: senha
-#  jpa:
-#    hibernate:
-#      ddl-auto: update
-#      dialect: org.hibernate.dialect.PostgreSQLDialect
-#      jdbc:
-#        lob.non-contextual-creation: true
-#    properties:
-#      hibernate:
-#  output:
-#    ansi:
-#      enabled: Always
-#
-#logging:
-#  level:
-#    com.ead: TRACE
-#    root: INFO
-#    org.springframework.web: DEBUG
-#    org.hibernate: DEBUG
+#spring.datasource.url=jdbc:h2:mem:testdb
+#spring.datasource.driverClassName=org.h2.Driver
+#spring.datasource.username=sa
+#spring.datasource.password=password
+#spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+server:
+  port: 8087
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ead-authuser
+    username: postgres
+    password: senha
+  jpa:
+    hibernate:
+      ddl-auto: update
+      dialect: org.hibernate.dialect.PostgreSQLDialect
+      jdbc:
+        lob.non-contextual-creation: true
+    properties:
+      hibernate:
+  output:
+    ansi:
+      enabled: Always
+
+logging:
+  level:
+    com.ead: TRACE
+    root: INFO
+    org.springframework.web: DEBUG
+    org.hibernate: DEBUG
+
+springdoc:
+  openapi:
+    title: 'Sistemas API Usuários'
+    description: 'Gestão de usuários do sistema'
+    version: '1.0.0'

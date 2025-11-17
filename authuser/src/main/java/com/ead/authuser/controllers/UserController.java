@@ -32,12 +32,12 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 @RestController
 @CrossOrigin(value = "*", maxAge = 3600)
 @RequestMapping("/users")
+@Tag(name = "Usuários", description = "Informações sobre os usuários")
 public class UserController {
     @Autowired
     private UserService userService;
 
     @GetMapping
-    @Tag(name = "Usuários", description = "Informações sobre os usuários")
     @Operation(summary = "Listar todos usuários ou por curso", description = "Essa função é responsável por listar por usuários")
     public ResponseEntity<Page<UserModel>> getAllUsers(SpecificationTemplate.UserPec spec,
                                                         @PageableDefault(page = 0, size = 10, sort = "userId",
@@ -58,7 +58,6 @@ public class UserController {
     }
 
     @GetMapping("/{userId}")
-    @Tag(name = "Usuários", description = "Informações sobre os usuários")
     @Operation(summary = "Listar todos usuários por uuid", description = "Essa função é responsável por listar por usuários por uuid")
     public ResponseEntity<Object> getOneUser(@PathVariable(value = "userId") UUID userId) {
         Optional<UserModel> userModelOptional = userService.findById(userId);
@@ -70,7 +69,6 @@ public class UserController {
     }
 
     @DeleteMapping("/{userId}")
-    @Tag(name = "Usuários", description = "Informações sobre os usuários")
     @Operation(summary = "Deletar usuários", description = "Essa função é responsável por deletar usuários")
     public ResponseEntity<Object> deleteUser(@PathVariable(value = "userId") UUID userId){
         log.debug("DELETE deleteUser userId received {} ", userId);
@@ -86,7 +84,6 @@ public class UserController {
     }
 
     @PutMapping("/{userId}")
-    @Tag(name = "Usuários", description = "Informações sobre os usuários")
     @Operation(summary = "Atualizar usuários", description = "Essa função é responsável por atualizar usuários por id")
     public ResponseEntity<Object> updateUser(@PathVariable(value = "userId") UUID userId,
                                              @RequestBody @Validated(UserDto.UserView.UserPut.class)
@@ -109,7 +106,6 @@ public class UserController {
     }
 
     @PutMapping("/{userId}/password")
-    @Tag(name = "Usuários", description = "Informações sobre os usuários")
     @Operation(summary = "Atualizar senha", description = "Essa função é responsável por atualizar senha")
     public ResponseEntity<Object> updatePassword(@PathVariable(value = "userId") UUID userId,
                                                  @RequestBody @Validated(UserDto.UserView.PasswordPut.class)
@@ -133,7 +129,6 @@ public class UserController {
     }
 
     @PutMapping("/{userId}/image")
-    @Tag(name = "Usuários", description = "Informações sobre os usuários")
     @Operation(summary = "Atualizar imagem", description = "Essa função é responsável por atualizar imagem")
     public ResponseEntity<Object> updateImage(@PathVariable(value = "userId") UUID userId,
                                               @RequestBody @Validated(UserDto.UserView.ImagePut.class)
